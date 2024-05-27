@@ -63,8 +63,8 @@ public class CustomersController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customers> findOne(@PathVariable("id") Long id) throws DataNotFoundException {
-        Customers result = customersService.findOne(id);
+    public ResponseEntity<CustomersResp> findOneCustomer(@PathVariable("id") Long id) throws DataNotFoundException {
+        CustomersResp result = customersService.findOneCustomer(id);
         return ResponseEntity.ok(result);
     }
 
