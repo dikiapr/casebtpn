@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomersService {
@@ -19,12 +18,12 @@ public class CustomersService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Customers save(Customers customers){
-        return customersRepository.save(customers);
-    }
-
     public List<Customers> findAll(){
         return customersRepository.findAll();
+    }
+
+    public Customers save(Customers customers){
+        return customersRepository.save(customers);
     }
 
     public Customers findOne(Long id) throws DataNotFoundException{

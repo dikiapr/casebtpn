@@ -20,9 +20,5 @@ public class CustomersReq {
     @NotEmpty(message = "Customer phone is required")
     private String customerPhone;
 
-    private Boolean isActive;
-
-    private Date lastOrderDate;
-
     private String pic;
 }
