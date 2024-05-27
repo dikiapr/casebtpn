@@ -1,6 +1,7 @@
 package com.casebtn.casebtn.controller;
 
 import com.casebtn.casebtn.dto.request.CustomersReq;
+import com.casebtn.casebtn.dto.response.CustomersResp;
 import com.casebtn.casebtn.dto.response.ResponseData;
 import com.casebtn.casebtn.exception.DataNotFoundException;
 import com.casebtn.casebtn.model.Customers;
@@ -31,8 +32,8 @@ public class CustomersController {
     public Date timeNow = new Date();
 
     @PostMapping
-    public ResponseEntity<ResponseData<Customers>> create (@Valid @RequestBody CustomersReq req, Errors errors){
-        ResponseData<Customers> responseData = new ResponseData<>();
+    public ResponseEntity<ResponseData<CustomersResp>> create (@Valid @RequestBody CustomersReq req, Errors errors){
+        ResponseData<CustomersResp> responseData = new ResponseData<>();
         if(errors.hasErrors()){
             for(ObjectError error : errors.getAllErrors()){
                 responseData.getMessages().add(error.getDefaultMessage());
@@ -47,9 +48,12 @@ public class CustomersController {
         customers.setLastOrderDate(timeNow);
         customers.setPic("foto 1");
 
+        customersService.save(customers);
+        CustomersResp customersResp = modelMapper.map(customers, CustomersResp.class);
+
         responseData.setStatus(true);
         responseData.getMessages().add("Customer created successfully");
-        responseData.setPayload(customersService.save(customers));
+        responseData.setPayload(customersResp);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseData);
     }
 
@@ -65,8 +69,8 @@ public class CustomersController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseData<Customers>> update (@PathVariable("id") Long id, @Valid @RequestBody CustomersReq req, Errors errors) throws DataNotFoundException{
-        ResponseData<Customers> responseData = new ResponseData<>();
+    public ResponseEntity<ResponseData<CustomersResp>> update (@PathVariable("id") Long id, @Valid @RequestBody CustomersReq req, Errors errors) throws DataNotFoundException{
+        ResponseData<CustomersResp> responseData = new ResponseData<>();
         if(errors.hasErrors()){
             for(ObjectError error : errors.getAllErrors()){
                 responseData.getMessages().add(error.getDefaultMessage());
@@ -90,7 +94,11 @@ public class CustomersController {
 
         responseData.setStatus(true);
         responseData.getMessages().add("Customer updated successfully");
-        responseData.setPayload(customersService.save(existingCustomer));
+
+        customersService.save(existingCustomer);
+        CustomersResp updatedCustomerResp = modelMapper.map(existingCustomer, CustomersResp.class);
+
+        responseData.setPayload(updatedCustomerResp);
         return ResponseEntity.ok(responseData);
     }
 
