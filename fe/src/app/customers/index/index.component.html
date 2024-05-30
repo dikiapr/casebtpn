@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>CRUD E-Commerce Example Project</h1>
+
+  <a href="#" routerLink="/customers/create/" class="btn btn-success me-3"
+    >Create New Customer</a
+  >
+  <a href="#" routerLink="/customers/index/" class="btn btn-primary me-3"
+    >Customer Index</a
+  >
+  <a href="#" routerLink="/items/index/" class="btn btn-primary me-3"
+    >Item Index</a
+  >
+  <a href="#" routerLink="/orders/index/" class="btn btn-primary"
+    >Order Index</a
+  >
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Customer ID</th>
+        <th>Customer Address</th>
+        <th>Customer Code</th>
+        <th>Customer Name</th>
+        <th>Customer Phone</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>PIC</th>
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customers of customerList">
+        <td>{{ customers.customerId }}</td>
+        <td>{{ customers.customerAddress }}</td>
+        <td>{{ customers.customerCode }}</td>
+        <td>{{ customers.customerName }}</td>
+        <td>{{ customers.customerPhone }}</td>
+        <td>{{ getStatusLabel(customers.isActive) }}</td>
+        <td>{{ customers.lastOrderDate }}</td>
+        <td>{{ customers.pic }}</td>
+        <td>
+          <a
+            href="#"
+            [routerLink]="['/customers/', customers.customerId, 'view']"
+            class="btn btn-info me-2"
+            >View</a
+          >
+          <a
+            href="#"
+            [routerLink]="['/customers/', customers.customerId, 'edit']"
+            class="btn btn-primary me-2"
+            >Edit</a
+          >
+          <button
+            type="button"
+            (click)="deleteCustomer(customers.customerId)"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

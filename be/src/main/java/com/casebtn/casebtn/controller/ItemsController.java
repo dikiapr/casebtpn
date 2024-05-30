@@ -25,6 +25,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("items")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ItemsController {
 
     @Autowired
@@ -48,7 +49,7 @@ public class ItemsController {
         }
 
         Items items = modelMapper.map(req,Items.class);
-        items.setIsAvailable(true);
+//        items.setIsAvailable(true);
         items.setLastReStock(timeNow);
 
         itemsService.save(items);
@@ -91,7 +92,7 @@ public class ItemsController {
         }
 
         modelMapper.map(req,existingItem);
-        existingItem.setIsAvailable(true);
+//        existingItem.setIsAvailable(true);
         existingItem.setLastReStock(timeNow);
 
         responseData.setStatus(true);

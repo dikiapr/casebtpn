@@ -15,4 +15,6 @@ public class ItemsResp {
     private Integer price;
 
     private Date lastReStock;
+
+    private Boolean isAvailable;
 }

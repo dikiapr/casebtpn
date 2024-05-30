@@ -1,0 +1,114 @@
+<div class="container">
+  <h1>Update Item</h1>
+
+  <a href="#" routerLink="/items/index" class="btn btn-primary">Back</a>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="title">Available:</label>
+      <select
+        formControlName="isAvailable"
+        id="isAvailable"
+        [ngModel]="item.isAvailable"
+        class="form-control"
+      >
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+      <div
+        *ngIf="f['isAvailable'].touched && f['isAvailable'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="f['isAvailable'].errors && f['isAvailable'].errors['required']"
+        >
+          Status Available is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Item Code:</label>
+      <textarea
+        formControlName="itemCode"
+        id="itemCode"
+        type="text"
+        [(ngModel)]="item.itemCode"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['itemCode'].touched && f['itemCode'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['itemCode'].errors && f['itemCode'].errors['required']">
+          Item Code is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Item Name:</label>
+      <textarea
+        formControlName="itemName"
+        id="itemName"
+        type="text"
+        [(ngModel)]="item.itemName"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['itemName'].touched && f['itemName'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['itemName'].errors && f['itemName'].errors['required']">
+          Item Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Price:</label>
+      <textarea
+        formControlName="price"
+        id="price"
+        type="text"
+        [(ngModel)]="item.price"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['price'].touched && f['price'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['price'].errors && f['price'].errors['required']">
+          Price is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Stock:</label>
+      <textarea
+        formControlName="stock"
+        id="stock"
+        type="text"
+        [(ngModel)]="item.stock"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['stock'].touched && f['stock'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['stock'].errors && f['stock'].errors['required']">
+          Stock is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Update
+    </button>
+  </form>
+</div>

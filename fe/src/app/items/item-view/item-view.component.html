@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>View Item</h1>
+
+  <a href="#" routerLink="/items/index" class="btn btn-primary">Back</a>
+
+  <div>
+    <strong>Available:</strong>
+    <p>{{ getStatusLabel(item.isAvailable) }}</p>
+  </div>
+
+  <div>
+    <strong>Item Code:</strong>
+    <p>{{ item.itemCode }}</p>
+  </div>
+
+  <div>
+    <strong>Item Name:</strong>
+    <p>{{ item.itemName }}</p>
+  </div>
+
+  <div>
+    <strong>Last Restock:</strong>
+    <p>{{ item.lastReStock }}</p>
+  </div>
+
+  <div>
+    <strong>Price:</strong>
+    <p>{{ item.price }}</p>
+  </div>
+
+  <div>
+    <strong>Stock:</strong>
+    <p>{{ item.stock }}</p>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>CRUD E-Commerce Example Project</h1>
+
+  <a href="#" routerLink="/items/create/" class="btn btn-success me-3"
+    >Create New Item</a
+  >
+  <a href="#" routerLink="/customers/index/" class="btn btn-primary me-3"
+    >Customer Index</a
+  >
+  <a href="#" routerLink="/items/index/" class="btn btn-primary me-3"
+    >Item Index</a
+  >
+  <a href="#" routerLink="/orders/index/" class="btn btn-primary"
+    >Order Index</a
+  >
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Available</th>
+        <th>Item Code</th>
+        <th>Item Name</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of itemList">
+        <td>{{ items.itemId }}</td>
+        <td>{{ getStatusLabel(items.isAvailable) }}</td>
+        <td>{{ items.itemCode }}</td>
+        <td>{{ items.itemName }}</td>
+        <td>{{ items.lastReStock }}</td>
+        <td>{{ items.price }}</td>
+        <td>{{ items.stock }}</td>
+        <td>
+          <a
+            href="#"
+            [routerLink]="['/items/', items.itemId, 'view']"
+            class="btn btn-info me-2"
+            >View</a
+          >
+          <a
+            href="#"
+            [routerLink]="['/items/', items.itemId, 'edit']"
+            class="btn btn-primary me-2"
+            >Edit</a
+          >
+          <button
+            type="button"
+            (click)="deleteItem(items.itemId)"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,107 @@
+<div class="container">
+  <h1>Create New Item</h1>
+
+  <a href="/items/index/" routerLink="/items/index/" class="btn btn-primary"
+    >Back</a
+  >
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="body">Available</label>
+      <select
+        formControlName="isAvailable"
+        id="isAvailable"
+        class="form-control"
+      >
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+      <div
+        *ngIf="f['isAvailable'].touched && f['isAvailable'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="f['isAvailable'].errors && f['isAvailable'].errors['required']"
+        >
+          Status Available is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Item Code:</label>
+      <input
+        formControlName="itemCode"
+        id="itemCode"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['itemCode'].touched && f['itemCode'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['itemCode'].errors && f['itemCode'].errors['required']">
+          Item Code is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Item Name:</label>
+      <input
+        formControlName="itemName"
+        id="itemName"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['itemName'].touched && f['itemName'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['itemName'].errors && f['itemName'].errors['required']">
+          Item Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Price:</label>
+      <input
+        formControlName="price"
+        id="price"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['price'].touched && f['price'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['price'].errors && f['price'].errors['required']">
+          Price is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Stock:</label>
+      <input
+        formControlName="stock"
+        id="stock"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['stock'].touched && f['stock'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['stock'].errors && f['stock'].errors['required']">
+          Price is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
+</div>

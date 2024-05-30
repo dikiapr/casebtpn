@@ -1,0 +1,130 @@
+<div class="container">
+  <h1>Create New Customer</h1>
+
+  <a href="#" routerLink="/customers/index/" class="btn btn-primary">Back</a>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="body">Customer Address</label>
+      <textarea
+        formControlName="customerAddress"
+        id="customerAddress"
+        type="text"
+        class="form-control"
+      >
+      </textarea>
+      <div
+        *ngIf="f['customerAddress'].touched && f['customerAddress'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['customerAddress'].errors &&
+            f['customerAddress'].errors['required']
+          "
+        >
+          Address is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Customer Code:</label>
+      <input
+        formControlName="customerCode"
+        id="customerCode"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['customerCode'].touched && f['customerCode'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['customerCode'].errors && f['customerCode'].errors['required']
+          "
+        >
+          Code is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Customer Name:</label>
+      <input
+        formControlName="customerName"
+        id="customerName"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['customerName'].touched && f['customerName'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['customerName'].errors && f['customerName'].errors['required']
+          "
+        >
+          Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Customer Phone:</label>
+      <input
+        formControlName="customerPhone"
+        id="customerPhone"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['customerPhone'].touched && f['customerPhone'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="
+            f['customerPhone'].errors && f['customerPhone'].errors['required']
+          "
+        >
+          Phone is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="isActive">Status:</label>
+      <select formControlName="isActive" id="isActive" class="form-control">
+        <option [ngValue]="true">Active</option>
+        <option [ngValue]="false">Inactive</option>
+      </select>
+      <div
+        *ngIf="f['isActive'].touched && f['isActive'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['isActive'].errors && f['isActive'].errors['required']">
+          Status is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">PIC:</label>
+      <input formControlName="pic" id="pic" type="text" class="form-control" />
+      <div
+        *ngIf="f['pic'].touched && f['pic'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['pic'].errors && f['pic'].errors['required']">
+          PIC is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
+</div>

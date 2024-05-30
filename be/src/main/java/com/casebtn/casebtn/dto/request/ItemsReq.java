@@ -25,4 +25,5 @@ public class ItemsReq {
     @Min(value = 0, message = "Price cannot be less than 0")
     private Integer price;
 
+    private Boolean isAvailable;
 }

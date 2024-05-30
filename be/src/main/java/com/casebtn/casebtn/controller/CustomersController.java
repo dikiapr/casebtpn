@@ -22,6 +22,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("customers")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CustomersController {
 
     @Autowired
@@ -46,7 +47,7 @@ public class CustomersController {
         Customers customers = modelMapper.map(req,Customers.class);
         customers.setIsActive(true);
         customers.setLastOrderDate(timeNow);
-        customers.setPic("foto 1");
+        customers.setPic("-");
 
         customersService.save(customers);
         CustomersResp customersResp = modelMapper.map(customers, CustomersResp.class);
@@ -88,9 +89,9 @@ public class CustomersController {
         }
 
         modelMapper.map(req,existingCustomer);
-        existingCustomer.setIsActive(true);
+//        existingCustomer.setIsActive(true);
         existingCustomer.setLastOrderDate(timeNow);
-        existingCustomer.setPic("foto 1");
+//        existingCustomer.setPic("-");
 
         responseData.setStatus(true);
         responseData.getMessages().add("Customer updated successfully");
