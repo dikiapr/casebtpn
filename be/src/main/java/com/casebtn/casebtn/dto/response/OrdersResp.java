@@ -10,4 +10,8 @@ public class OrdersResp {
     public Date orderDate;
     public Integer totalPrice;
     public Integer quantity;
+
+    private Long itemId;
+    private Long customerId;
+    private String orderCode;
 }

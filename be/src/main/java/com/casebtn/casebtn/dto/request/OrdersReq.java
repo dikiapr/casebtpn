@@ -16,4 +16,6 @@ public class OrdersReq {
 
     @NotNull(message = "itemId is required")
     private Long itemId;
+
+    private String orderCode;
 }

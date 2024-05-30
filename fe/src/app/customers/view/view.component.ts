@@ -26,8 +26,4 @@ export class ViewComponent {
       this.customer = data;
     });
   }
-
-  getStatusLabel(isActive: boolean): string {
-    return isActive ? 'Yes' : 'No';
-  }
 }

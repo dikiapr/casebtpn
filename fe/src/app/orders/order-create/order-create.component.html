@@ -1,0 +1,87 @@
+<div class="container">
+  <h1>Create New Order</h1>
+
+  <a href="/orders/index/" routerLink="/orders/index/" class="btn btn-primary"
+    >Back</a
+  >
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="title">Order Code:</label>
+      <input
+        formControlName="orderCode"
+        id="orderCode"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['orderCode'].touched && f['orderCode'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['orderCode'].errors && f['orderCode'].errors['required']">
+          Order Code is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Customer Id:</label>
+      <input
+        formControlName="customerId"
+        id="customerId"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['customerId'].touched && f['customerId'].invalid"
+        class="alert alert-danger"
+      >
+        <div
+          *ngIf="f['customerId'].errors && f['customerId'].errors['required']"
+        >
+          Customer Id is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Item Id:</label>
+      <input
+        formControlName="itemId"
+        id="itemId"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['itemId'].touched && f['itemId'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['itemId'].errors && f['itemId'].errors['required']">
+          Item Id is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Quantity:</label>
+      <input
+        formControlName="quantity"
+        id="quantity"
+        type="text"
+        class="form-control"
+      />
+      <div
+        *ngIf="f['quantity'].touched && f['quantity'].invalid"
+        class="alert alert-danger"
+      >
+        <div *ngIf="f['quantity'].errors && f['quantity'].errors['required']">
+          Quantity is required.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
+</div>

@@ -75,7 +75,10 @@ public class OrdersService {
 
         existingOrder.setCustomers(customer);
         existingOrder.setItems(item);
+        existingOrder.setItemId(req.getItemId());
+        existingOrder.setCustomerId(req.getCustomerId());
         existingOrder.setQuantity(req.getQuantity());
+        existingOrder.setOrderCode(req.getOrderCode());
         existingOrder.setTotalPrice(req.getQuantity() * item.getPrice());
 
         ordersRepository.save(existingOrder);

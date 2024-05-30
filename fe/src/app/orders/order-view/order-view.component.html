@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>View Order</h1>
+
+  <a href="/orders/index" routerLink="/orders/index" class="btn btn-primary"
+    >Back</a
+  >
+
+  <div>
+    <strong>Order Code:</strong>
+    <p>{{ order.orderCode }}</p>
+  </div>
+
+  <div>
+    <strong>Customer Id:</strong>
+    <p>{{ order.customerId }}</p>
+  </div>
+
+  <div>
+    <strong>Item Id:</strong>
+    <p>{{ order.itemId }}</p>
+  </div>
+
+  <div>
+    <strong>Quantity:</strong>
+    <p>{{ order.quantity }}</p>
+  </div>
+
+  <div>
+    <strong>Order Date:</strong>
+    <p>{{ order.orderDate }}</p>
+  </div>
+
+  <div>
+    <strong>Total Price:</strong>
+    <p>{{ order.totalPrice }}</p>
+  </div>
+</div>
