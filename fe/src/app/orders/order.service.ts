@@ -60,6 +60,14 @@ export class OrderService {
       .pipe(catchError(this.errorHandler));
   }
 
+  getReport(format: string): Observable<Blob> {
+    return this.httpClient
+      .get(`${this.apiURL}/v1/api/orders/report/${format}`, {
+        responseType: 'blob',
+      })
+      .pipe(catchError(this.errorHandler));
+  }
+
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

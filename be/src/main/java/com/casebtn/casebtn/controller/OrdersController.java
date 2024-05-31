@@ -7,12 +7,18 @@ import com.casebtn.casebtn.exception.DataNotFoundException;
 import com.casebtn.casebtn.model.Customers;
 import com.casebtn.casebtn.model.Orders;
 import com.casebtn.casebtn.service.OrdersService;
+import com.casebtn.casebtn.service.ReportService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +30,12 @@ public class OrdersController {
 
     @Autowired
     private OrdersService ordersService;
+
+    @Autowired
+    private ReportService reportService;
+
+    @Autowired
+    private HttpServletResponse response;
 
     @GetMapping
     public ResponseEntity<List<Orders>> findAll(){
@@ -63,5 +75,10 @@ public class OrdersController {
             response.put("message", "Order not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
+    }
+
+    @GetMapping("report/{format}")
+    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+        return reportService.exportReport(format);
     }
 }
